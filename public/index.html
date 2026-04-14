@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auth Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Secure Session Studio</p>
+        <h1>Modern auth flows, made tangible.</h1>
+        <p class="lede">
+          Use the forms to register, login, refresh tokens, and manage sessions.
+          This UI talks to your existing Express endpoints.
+        </p>
+        <div class="pill-row">
+          <span class="pill">/api/auth/register</span>
+          <span class="pill">/api/auth/login</span>
+          <span class="pill">/api/auth/get-me</span>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="card">
+          <h2>Create account</h2>
+          <p class="muted">Register a new user with username, email, and password.</p>
+          <form id="register-form" class="stack">
+            <input name="username" placeholder="Username" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button type="submit">Register</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Welcome back</h2>
+          <p class="muted">Login and get a fresh access token.</p>
+          <form id="login-form" class="stack">
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Session tools</h2>
+          <p class="muted">Use your access token to fetch profile data.</p>
+          <div class="stack">
+            <button id="get-me">Get Me</button>
+            <button id="refresh">Refresh Token</button>
+            <button id="logout" class="ghost">Logout</button>
+            <button id="logout-all" class="ghost">Logout All</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <div class="card">
+          <h2>Access token</h2>
+          <p class="muted">Stored in local storage for quick demo use.</p>
+          <div class="token-row">
+            <input id="token" placeholder="Access token" />
+            <button id="save-token" class="ghost">Save</button>
+            <button id="clear-token" class="ghost">Clear</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Response</h2>
+          <pre id="response" aria-live="polite">Waiting for action...</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
