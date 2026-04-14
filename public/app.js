@@ -1,6 +1,9 @@
+const BASE_URL = "https://mern-jwt-auth-server.onrender.com";
+
 const responseBox = document.getElementById("response");
 const tokenInput = document.getElementById("token");
 
+// Load saved token
 const storedToken = localStorage.getItem("accessToken");
 if (storedToken) {
   tokenInput.value = storedToken;
@@ -19,8 +22,9 @@ function saveToken(token) {
   localStorage.setItem("accessToken", token);
 }
 
+// ✅ FIXED request function
 async function request(path, options = {}) {
-  const res = await fetch(path, {
+  const res = await fetch(BASE_URL + path, {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
@@ -43,6 +47,7 @@ async function request(path, options = {}) {
   return data;
 }
 
+// ✅ Register
 document.getElementById("register-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -69,6 +74,7 @@ document.getElementById("register-form").addEventListener("submit", async (event
   }
 });
 
+// ✅ Login
 document.getElementById("login-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -94,50 +100,65 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
   }
 });
 
+// ✅ Get Me
 document.getElementById("get-me").addEventListener("click", async () => {
   try {
     const token = getToken();
+
     const data = await request("/api/auth/get-me", {
       headers: {
         Authorization: token ? `Bearer ${token}` : ""
       }
     });
+
     showResponse(data);
   } catch (err) {
     showResponse(err);
   }
 });
 
+// ✅ Refresh Token
 document.getElementById("refresh").addEventListener("click", async () => {
   try {
     const data = await request("/api/auth/refresh-token");
+
     if (data.accessToken) {
       saveToken(data.accessToken);
     }
+
     showResponse(data);
   } catch (err) {
     showResponse(err);
   }
 });
 
+// ✅ Logout
 document.getElementById("logout").addEventListener("click", async () => {
   try {
-    const data = await request("/api/auth/logout", { method: "POST" });
+    const data = await request("/api/auth/logout", {
+      method: "POST"
+    });
+
     showResponse(data);
   } catch (err) {
     showResponse(err);
   }
 });
 
+// ✅ Logout All
 document.getElementById("logout-all").addEventListener("click", async () => {
   try {
-    const data = await request("/api/auth/logout-all", { method: "POST" });
+    const data = await request("/api/auth/logout-all", {
+      method: "POST"
+    });
+
     showResponse(data);
   } catch (err) {
     showResponse(err);
   }
 });
 
+// ✅ Save Token
 document.getElementById("save-token").addEventListener("click", () => {
   const token = getToken();
   if (token) {
@@ -145,6 +166,7 @@ document.getElementById("save-token").addEventListener("click", () => {
   }
 });
 
+// ✅ Clear Token
 document.getElementById("clear-token").addEventListener("click", () => {
   tokenInput.value = "";
   localStorage.removeItem("accessToken");
