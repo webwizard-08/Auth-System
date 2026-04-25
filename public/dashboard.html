@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auth Studio - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="dashboard">
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <div class="card hero">
+        <div class="row">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Profile overview</h1>
+            <p class="lede">This data comes from the protected endpoint.</p>
+          </div>
+          <button id="logout" class="ghost">Logout</button>
+        </div>
+        <section class="panel two">
+          <div class="card inset">
+            <p class="eyebrow alt">Protected data</p>
+            <pre id="profile-output">Loading profile...</pre>
+          </div>
+          <div class="card inset">
+            <h2>Quick tips</h2>
+            <ul class="tips">
+              <li>Token is stored in localStorage as accessToken.</li>
+              <li>Dashboard uses /api/auth/get-me with Authorization header.</li>
+              <li>Logout clears the token and redirects to login.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>

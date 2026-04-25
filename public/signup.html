@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auth Studio - Signup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="signup">
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <section class="panel two">
+        <div class="card">
+          <h2>Create account</h2>
+          <p class="muted">Start a new session in seconds.</p>
+          <form id="signup-form" class="stack">
+            <input name="username" placeholder="Username" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button type="submit">Sign up</button>
+          </form>
+          <div class="helper">
+            <span>Already have an account?</span>
+            <a href="./index.html">Login</a>
+          </div>
+        </div>
+
+        <div class="card hero">
+          <p class="eyebrow">Session Builder</p>
+          <h1>Make a new identity.</h1>
+          <p class="lede">Create a profile and jump into your JWT dashboard.</p>
+          <div class="info-grid">
+            <div>
+              <p class="label">Register Endpoint</p>
+              <p class="value">/api/auth/register</p>
+            </div>
+            <div>
+              <p class="label">Redirect</p>
+              <p class="value">/index.html</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
