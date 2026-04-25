@@ -12,5 +12,11 @@ app.use(express.static("public"));
 
 app.use("/api/auth" , authRouter);
 
+app.get("/", (req, res) => {
+	res.status(200).json({
+		message: "Auth API is running"
+	});
+});
+
 
 export default app;
