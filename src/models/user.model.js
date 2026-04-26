@@ -16,7 +16,18 @@ const userSchema  = new mongoose.Schema({
     password:{
         type : String,
         required:[true , "Password is reruired"]
+    },
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
+    },
+    isBlocked: {
+        type: Boolean,
+        default: false
     }
+}, {
+    timestamps: true
 })
 
 const userModel  = mongoose.model("user" , userSchema);
